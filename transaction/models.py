@@ -19,3 +19,14 @@ class Transaction(models.Model):
     type = models.CharField(max_length=3,
                             choices=TRANSACTION_TYPE,
                             default=ACCRUAL_POINTS)
+
+    def save(self, *args, **kwargs):
+        super(Transaction, self).save(*args, **kwargs)
+        owner = Client.objects.get(card_number=self.owner)
+
+        if self.ACCRUAL_POINTS == self.type:
+            owner.balance += self.amount
+            owner.save()
+        elif self.PAYMENT_BY_POINTS == self.type:
+            owner.balance -= self.amount
+            owner.save()
