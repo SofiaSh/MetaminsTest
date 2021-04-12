@@ -6,4 +6,4 @@ class TransactionSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Transaction
-        fields = ('first_name', 'last_name' 'phone_number', 'balance', 'card_number')
+        fields = ('owner', 'date', 'amount', 'type')

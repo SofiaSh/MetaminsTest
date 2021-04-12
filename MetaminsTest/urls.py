@@ -7,9 +7,10 @@ from django.conf.urls import include, url
 
 router = DefaultRouter()
 router.register(r'clients', ClientViewSet)
-router.register(r'Transactions', TransactionViewSet)
+router.register(r'transactions', TransactionViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    path(r'cards/', ClientViewSet.as_view({'get': 'retrieve'})),
     path('admin/', admin.site.urls),
+    url(r'^', include(router.urls)),
 ]

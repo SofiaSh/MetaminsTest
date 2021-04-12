@@ -3,7 +3,7 @@ from client.models import Client
 
 
 class Transaction(models.Model):
-    owner = models.ForeignKey(Client, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Client, related_name='transaction', on_delete=models.CASCADE)
     date = models.DateTimeField()
     amount = models.IntegerField()
 
