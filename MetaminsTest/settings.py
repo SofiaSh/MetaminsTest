@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'client.apps.ClientConfig',
-    'transaction.apps.TransactionConfig'
+    'transaction.apps.TransactionConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
